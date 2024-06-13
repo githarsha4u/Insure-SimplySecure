@@ -52,7 +52,7 @@
             margin: 0 auto;
         }
         .section {
-            background-color: white;
+            background-color: #e0f7ff;
             margin: 20px 0;
             padding: 20px;
             border-radius: 8px;
@@ -89,12 +89,18 @@
         .section li {
             margin-bottom: 10px;
         }
+        .section#types, .section#how-to-choose, .section#faqs {
+            background-color: #e6f7ff;
+        }
+        .section#types h2, .section#how-to-choose h2, .section#faqs h2 {
+            color: #004080;
+        }
         details {
             margin-bottom: 10px;
             padding: 10px;
             border: 1px solid #d1e7dd;
             border-radius: 5px;
-            background-color: #f8f9fa;
+            background-color: #fffbe7;
         }
         summary {
             font-weight: bold;
@@ -142,20 +148,24 @@
             overflow: hidden;
         }
         .feature-box {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: #f0f8ff;
-            padding: 20px;
-            margin: 10px;
+            background-color: #ffffff;
             border: 1px solid #ddd;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
         }
         .feature-box h3 {
             margin-top: 0;
             color: #005f99;
+            font-size: 1.6em; /* Adjusted */
         }
         .feature-box ul {
             list-style-type: none;
@@ -163,6 +173,91 @@
         }
         .feature-box li {
             margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        .benefits-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .benefit {
+            flex: 1 1 calc(30% - 20px);
+            background-color: #e6f7ff;
+            border: 1px solid #d1e7dd;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .benefit:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        .benefit h3 {
+            color: #004080;
+            margin-top: 0;
+            font-size: 1.6em; /* Adjusted */
+        }
+        .benefit-content {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+        }
+        .benefit:hover .benefit-content {
+            opacity: 1;
+            max-height: 200px; /* Adjust as needed */
+        }
+        /* Custom styles for the Overview section */
+        .overview-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f9f9f9;
+            border: 2px solid #b0e0e6;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .overview-container::before, .overview-container::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 223, 186, 0.5);
+        }
+        .overview-container::before {
+            width: 150px;
+            height: 150px;
+            top: -40px;
+            left: -40px;
+        }
+        .overview-container::after {
+            width: 100px;
+            height: 100px;
+            bottom: -30px;
+            right: -30px;
+        }
+        .overview-heading {
+            color: #004080;
+            margin-bottom: 10px;
+            font-size: 2em; /* Adjusted */
+            font-weight: 700;
+        }
+        .overview-content {
+            max-width: 1000px;
+            color: #333;
+            line-height: 1.6;
+            text-align: center;
+            font-size: 1.1em; /* Adjusted */
+        }
+        .overview-content p {
+            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -178,10 +273,13 @@
         <a href="#faqs">FAQs</a>
     </nav>
     <div class="content">
-        <div class="section" id="overview">
-            <h2>Overview</h2>
-            <p>Health insurance is a crucial component of personal financial planning and healthcare management. It involves a contract between the insured (individual) and the insurer (insurance company), where the insurer agrees to cover some or all of the insured's healthcare costs in exchange for regular premium payments. This coverage can include a wide array of medical services, ranging from routine check-ups and preventive care to emergency services and complex surgeries. The primary goal of health insurance is to protect individuals and families from the high costs of medical care, ensuring access to necessary health services without causing financial hardship.</p>
-            <p>Health insurance policies can vary widely in terms of what they cover, the extent of coverage, and the costs involved. Policies can be individual or family plans, employer-sponsored, or government-provided. Each type of plan has its own network of healthcare providers, coverage limits, deductibles, co-payments, and premiums, all of which impact the overall cost and accessibility of healthcare services.</p>
+        <div class="overview-container" id="overview">
+            <h2 class="overview-heading">Overview</h2>
+            <div class="overview-content">
+                <p>Health insurance is a crucial component of personal financial planning and healthcare management. It involves a contract between the insured (policyholder) and the insurer (insurance company) where the insurer agrees to cover the insured's medical expenses in exchange for a premium.</p>
+                <p>Understanding the different types of health insurance, their benefits, and how to choose the right plan can help individuals make informed decisions that best suit their healthcare needs and financial situation.</p>
+                <p>This guide provides a comprehensive overview of health insurance, including its types, benefits, and essential tips for selecting the right plan.</p>
+            </div>
         </div>
         <div class="section" id="types">
             <h2>Types of Health Insurance</h2>
@@ -216,32 +314,52 @@
                     <li><strong>Combination Plan</strong>: Mixes features of HMOs and PPOs.</li>
                     <li><strong>Primary Care Provider</strong>: Required to choose a PCP who coordinates care.</li>
                     <li><strong>Referrals for Out-of-Network</strong>: Members can see out-of-network providers with a referral but at a higher cost.</li>
-                    <li><strong>Cost</strong>: Lower in-network costs, higher out-of-network costs.</li>
-                </ul>
-            </div>
-            <div class="feature-box">
-                <h3>High-Deductible Health Plans (HDHPs)</h3>
-                <ul>
-                    <li><strong>High Deductible</strong>: Members pay higher out-of-pocket costs before the insurance starts to pay.</li>
-                    <li><strong>Health Savings Account (HSA)</strong>: Often paired with HSAs, allowing pre-tax savings for medical expenses.</li>
-                    <li><strong>Cost</strong>: Lower monthly premiums, suitable for individuals with low healthcare usage who want to save on premiums and benefit from tax advantages.</li>
                 </ul>
             </div>
         </div>
         <div class="section" id="benefits">
-            <h2>Benefits</h2>
-            <p>Health insurance provides a variety of significant benefits that can greatly impact an individual's financial stability and overall well-being:</p>
-            <ul>
-                <li><strong>Financial Protection Against High Medical Costs</strong>: Health insurance helps cover the cost of medical treatments, surgeries, hospital stays, and other healthcare services, reducing the financial burden on individuals and families. Without insurance, the cost of medical care can be prohibitively expensive, leading to potential financial hardship.</li>
-                <li><strong>Access to Preventive Services</strong>: Many health insurance plans cover preventive services such as vaccinations, screenings, and annual check-ups at no additional cost. This encourages early detection and treatment of potential health issues, which can prevent more severe conditions and costly treatments later.</li>
-                <li><strong>Comprehensive Coverage</strong>: Health insurance plans often cover a wide range of services, including emergency care, prescription medications, mental health services, and chronic disease management. This comprehensive coverage ensures that individuals have access to the care they need, when they need it.</li>
-                <li><strong>Improved Health Outcomes</strong>: With access to regular healthcare services and early interventions, individuals with health insurance are more likely to manage chronic conditions effectively, maintain better overall health, and enjoy longer, healthier lives.</li>
-                <li><strong>Peace of Mind</strong>: Knowing that you have health insurance provides peace of mind, reducing stress and anxiety about potential medical emergencies or unexpected health issues. This security allows individuals to focus on their daily lives and well-being.</li>
-                <li><strong>Employer Benefits</strong>: Many employers offer health insurance as part of their benefits package, which can attract and retain employees. Employer-sponsored health insurance often includes a portion of the premium paid by the employer, making it more affordable for employees.</li>
-            </ul>
+            <h2>Benefits of Health Insurance</h2>
+            <div class="benefits-container">
+                <div class="benefit">
+                    <h3>Financial Protection</h3>
+                    <div class="benefit-content">
+                        <p>Shields individuals and families from the high costs of medical treatments and hospitalizations.</p>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <h3>Access to Quality Care</h3>
+                    <div class="benefit-content">
+                        <p>Provides access to a wide range of healthcare services and medical professionals.</p>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <h3>Preventive Services</h3>
+                    <div class="benefit-content">
+                        <p>Often covers preventive care, such as vaccinations and screenings, to help catch health issues early.</p>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <h3>Mental Health Coverage</h3>
+                    <div class="benefit-content">
+                        <p>Includes mental health services, which are crucial for overall well-being.</p>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <h3>Prescription Drug Coverage</h3>
+                    <div class="benefit-content">
+                        <p>Helps reduce the cost of medications, ensuring patients can afford necessary treatments.</p>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <h3>Comprehensive Coverage</h3>
+                    <div class="benefit-content">
+                        <p>Covers various medical needs, including emergency services, surgeries, and chronic disease management.</p>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="section" id="how-to-choose">
-            <h2>How to Choose the Right Health Insurance</h2>
+            <h2>How to Choose the Right Health Insurance Plan</h2>
             <details>
                 <summary>Assess Your Healthcare Needs</summary>
                 <p>Consider your health status, frequency of doctor visits, medications, and any planned medical procedures.</p>
@@ -268,45 +386,31 @@
             </details>
         </div>
         <div class="section" id="faqs">
-            <h2>Frequently Asked Questions</h2>
+            <h2>FAQs</h2>
             <details>
-                <summary>What is a deductible in health insurance?</summary>
-                <p>A deductible is the amount you pay out-of-pocket for healthcare services before your insurance plan starts to pay. For example, if your plan has a $1,000 deductible, you must pay $1,000 for services before the insurer begins to cover costs.</p>
+                <summary>What is a premium in health insurance?</summary>
+                <p>A premium is the amount you pay for your health insurance every month. Even if you don't use medical services, you must pay your premium to keep your coverage active.</p>
             </details>
             <details>
-                <summary>How does a Health Savings Account (HSA) work?</summary>
-                <p>An HSA is a tax-advantaged savings account designed for individuals with high-deductible health plans (HDHPs). You can contribute pre-tax dollars to the account and use the funds to pay for qualified medical expenses, including deductibles, co-payments, and prescriptions. HSAs offer triple tax benefits: contributions are tax-deductible, earnings grow tax-free, and withdrawals for qualified expenses are tax-free.</p>
+                <summary>What is a deductible?</summary>
+                <p>A deductible is the amount you must pay out-of-pocket for covered healthcare services before your insurance plan starts to pay. For example, if your deductible is $1,000, you'll pay 100% of eligible healthcare expenses until the total amount spent reaches $1,000. After that, your insurance starts to pay.</p>
             </details>
             <details>
                 <summary>What is the difference between in-network and out-of-network providers?</summary>
-                <p>In-network providers have contracted with your insurance company to provide services at negotiated rates, often resulting in lower costs to you. Out-of-network providers do not have such agreements, and using them usually results in higher out-of-pocket costs since they can charge higher fees and may not count toward your plan's coverage limits.</p>
+                <p>In-network providers have contracted with your insurance company to provide services at a negotiated rate. Out-of-network providers have not agreed to the negotiated rate, and using them will generally result in higher out-of-pocket costs.</p>
             </details>
             <details>
-                <summary>Can I change my health insurance plan outside the open enrollment period?</summary>
-                <p>Typically, you can only change your health insurance plan during the open enrollment period. However, certain life events, such as marriage, divorce, birth of a child, or loss of other health coverage, qualify you for a special enrollment period, during which you can change your plan.</p>
+                <summary>What does out-of-pocket maximum mean?</summary>
+                <p>The out-of-pocket maximum is the most you'll have to pay for covered healthcare services in a policy period (typically one year). After you spend this amount on deductibles, co-payments, and co-insurance, your health plan pays 100% of the costs of covered benefits.</p>
             </details>
             <details>
-                <summary>What are co-payments and co-insurance?</summary>
-                <p>Co-payments (co-pays) are fixed amounts you pay for specific healthcare services at the time of care, such as $20 for a doctor's visit. Co-insurance is a percentage of the cost of a covered service that you pay after you've met your deductible. For example, if your co-insurance is 20%, you pay 20% of the service cost while the insurance pays the remaining 80%.</p>
+                <summary>Can I change my health insurance plan outside of open enrollment?</summary>
+                <p>Typically, you can only change your health insurance plan during the open enrollment period. However, you may qualify for a special enrollment period if you experience certain life events, such as getting married, having a baby, or losing other health coverage.</p>
             </details>
         </div>
     </div>
     <footer>
         <p>&copy; 2024 Health Insurance Guide. All rights reserved.</p>
     </footer>
-    <script>
-        const accordions = document.querySelectorAll('.accordion');
-        accordions.forEach(accordion => {
-            accordion.addEventListener('click', function() {
-                this.classList.toggle('active');
-                const panel = this.nextElementSibling;
-                if (panel.style.display === 'block') {
-                    panel.style.display = 'none';
-                } else {
-                    panel.style.display = 'block';
-                }
-            });
-        });
-    </script>
 </body>
 </html>
