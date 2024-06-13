@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Policy Summaries</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff9e6; /* Lightest Yellow */
+            color: #333;
+        }
+        header {
+            background-color: #007bff; /* Blue */
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        .container {
+            padding: 50px 20px;
+            background-color: #fff9e6; /* Lightest Yellow */
+            margin: 20px auto;
+            max-width: 1200px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .container h1 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #333; /* Black */
+        }
+        .policy-selector {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .policy-selector select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 300px;
+            background-color: #f5f5f5;
+            transition: border-color 0.3s ease;
+        }
+        .policy-selector select:focus {
+            border-color: #007bff; /* Blue */
+        }
+        .policy-details {
+            display: none;
+            margin-top: 20px;
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .policy-details h2 {
+            font-size: 28px;
+            color: #333; /* Black */
+            margin-bottom: 20px;
+        }
+        .policy-details table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .policy-details th, .policy-details td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .policy-details th {
+            background-color: #007bff; /* Blue */
+            color: #ffffff;
+        }
+        .policy-details td {
+            background-color: #fff9e6; /* Lightest Yellow */
+        }
+        .card {
+            background-color: #e3f2fd; /* Light blue */
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .card h3 {
+            margin: 10px 0;
+            font-size: 24px;
+            color: #007bff; /* Blue */
+        }
+        .card p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: #333; /* Black */
+        }
+        footer {
+            background-color: #007bff; /* Blue */
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        /* Styles for the Insurance Section */
+        .insurance-section {
+            padding: 50px 20px;
+            background-color: #fff9e6; /* Lightest Yellow */
+            margin: 20px auto;
+            max-width: 1200px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .insurance-content {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+        }
+        .insurance-content .content {
+            flex: 2;
+            padding-right: 40px;
+        }
+        .insurance-content .content h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333; /* Black */
+        }
+        .insurance-content .content p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #333; /* Black */
+        }
+        .insurance-content .content ul {
+            list-style: none;
+            padding: 0;
+        }
+        .insurance-content .content ul li {
+            margin-bottom: 10px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            color: #333; /* Black */
+        }
+        .insurance-content .content ul li:before {
+            content: '✓';
+            margin-right: 10px;
+            color: #333; /* Black */
+        }
+        .insurance-content .cards {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .insurance-content .card {
+            background-color: #fff9c4; /* Light Yellow */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        .insurance-content .card:hover {
+            transform: translateY(-5px);
+        }
+        .insurance-content .card h3 {
+            margin: 0 0 10px 0;
+            font-size: 18px;
+            color: #333; /* Black */
+        }
+        .insurance-content .card p {
+            margin: 0;
+            font-size: 14px;
+            color: #555;
+        }
+        .insurance-content .card img {
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Health Policy Summaries</div>
+    </header>
+
+    <div class="container">
+        <h1>Select Your Policy</h1>
+        <div class="policy-selector">
+            <select id="policySelect" onchange="showPolicyDetails()">
+                <option value="" disabled selected>Select a policy</option>
+                <option value="policy1">Max Life Insurance</option>
+                <option value="policy2">Tata Cliq Insurance</option>
+                <option value="policy3">Aditya Birla Insurance</option>
+                <option value="policy4">HDFC Cergo Life Insurance</option>
+                <option value="policy5">Star Health Insurance</option>
+            </select>
+        </div>
+        <div class="policy-details" id="policyDetails">
+            <h2 id="policyTitle">Policy Title</h2>
+            <table>
+                <tr>
+                    <th>Sub Limits</th>
+                    <td id="subLimits">-</td>
+                </tr>
+                <tr>
+                    <th>Room Rent Cap</th>
+                    <td id="roomRentCap">-</td>
+                </tr>
+                <tr>
+                    <th>Co-Pay</th>
+                    <td id="coPay">-</td>
+                </tr>
+                <tr>
+                    <th>Waiting Period</th>
+                    <td id="waitingPeriod">-</td>
+                </tr>
+                <tr>
+                    <th>Restoration of the Sum Assured</th>
+                    <td id="restoration">-</td>
+                </tr>
+                <tr>
+                    <th>Zonal vs Pan India</th>
+                    <td id="zonalPanIndia">-</td>
+                </tr>
+                <tr>
+                    <th>List of Exclusions</th>
+                    <td id="exclusions">-</td>
+                </tr>
+                <tr>
+                    <th>Cashless + Reimbursement Availability</th>
+                    <td id="cashlessReimbursement">-</td>
+                </tr>
+                <tr>
+                    <th>TopUp vs Super TopUp and Conditions</th>
+                    <td id="topUp">-</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="insurance-section">
+        <div class="insurance-content">
+            <div class="content">
+                <h2>Why should you buy insurance from Insure?</h2>
+                <p>We probe customers about their past medical conditions. We give them meaningful advice on how to pick a good policy. We treat them as if we would treat one of our own. We help them in claim settlements. We fight for our customers if they are denied a claim.</p>
+                <ul>
+                    <li>Personalized advice</li>
+                    <li>Comprehensive coverage</li>
+                    <li>Affordable premiums</li>
+                    <li>Easy claim process</li>
+                    <li>24/7 Customer support</li>
+                </ul>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <img src="icon1.png" alt="Icon 1">
+                    <h3>Comprehensive Coverage</h3>
+                    <p>Our policies offer extensive coverage for a wide range of medical conditions and treatments.</p>
+                </div>
+                <div class="card">
+                    <img src="icon2.png" alt="Icon 2">
+                    <h3>Affordable Premiums</h3>
+                    <p>We offer competitive premiums to ensure that you get the best value for your money.</p>
+                </div>
+                <div class="card">
+                    <img src="icon3.png" alt="Icon 3">
+                    <h3>24/7 Customer Support</h3>
+                    <p>Our customer support team is available around the clock to assist you with any inquiries or issues.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Health Policy Summaries. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const policies = {
+            policy1: {
+                title: "Max Life Insurance",
+                subLimits: "No sub-limits for hospitalization expenses",
+                roomRentCap: "No room rent capping",
+                coPay: "No co-payment required",
+                waitingPeriod: "30 days for general illnesses, 2 years for pre-existing conditions",
+                restoration: "Automatic restoration of 100% of the sum assured",
+                zonalPanIndia: "Pan India coverage",
+                exclusions: "Cosmetic treatments, dental procedures, non-allopathic treatment",
+                cashlessReimbursement: "Available at over 5,000 network hospitals",
+                topUp: "Super top-up plans available with various conditions"
+            },
+            policy2: {
+                title: "Tata Cliq Insurance",
+                subLimits: "Sub-limits applicable on certain treatments",
+                roomRentCap: "Room rent cap of 1% of sum assured per day",
+                coPay: "10% co-payment for all claims",
+                waitingPeriod: "90 days for general illnesses, 2 years for pre-existing conditions",
+                restoration: "Restoration of 50% of the sum assured once a year",
+                zonalPanIndia: "Coverage limited to specific zones",
+                exclusions: "Maternity expenses, pre-existing diseases for 2 years",
+                cashlessReimbursement: "Available at select network hospitals",
+                topUp: "Top-up plans available, no super top-up"
+            },
+            policy3: {
+                title: "Aditya Birla Insurance",
+                subLimits: "No sub-limits on hospitalization expenses",
+                roomRentCap: "Room rent cap of 2% of sum assured per day",
+                coPay: "20% co-payment for senior citizens",
+                waitingPeriod: "60 days for general illnesses, 1 year for pre-existing conditions",
+                restoration: "Restoration of 100% of the sum assured twice a year",
+                zonalPanIndia: "Pan India coverage",
+                exclusions: "Mental illnesses, substance abuse treatments",
+                cashlessReimbursement: "Available at over 3,000 network hospitals",
+                topUp: "Super top-up plans with deductible options"
+            },
+            policy4: {
+                title: "HDFC Cergo Life Insurance",
+                subLimits: "Sub-limits on certain day-care procedures",
+                roomRentCap: "No room rent capping",
+                coPay: "15% co-payment for all claims",
+                waitingPeriod: "30 days for general illnesses, 4 years for pre-existing conditions",
+                restoration: "Single restoration of 100% of the sum assured per year",
+                zonalPanIndia: "Pan India coverage with higher premiums for metro cities",
+                exclusions: "Experimental treatments, obesity treatments",
+                cashlessReimbursement: "Available at all major hospitals",
+                topUp: "Top-up and super top-up plans available"
+            },
+            policy5: {
+                title: "Star Health Insurance",
+                subLimits: "No sub-limits for hospitalization",
+                roomRentCap: "Room rent cap of 1.5% of sum assured per day",
+                coPay: "5% co-payment for non-network hospitals",
+                waitingPeriod: "30 days for general illnesses, 3 years for pre-existing conditions",
+                restoration: "Restoration of 100% of the sum assured thrice a year",
+                zonalPanIndia: "Pan India coverage",
+                exclusions: "Infertility treatments, HIV/AIDS treatments",
+                cashlessReimbursement: "Available at 6,000+ network hospitals",
+                topUp: "Super top-up with annual deductible options"
+            }
+        };
+
+        function showPolicyDetails() {
+            const select = document.getElementById("policySelect");
+            const selectedPolicy = select.value;
+            const details = policies[selectedPolicy];
+            
+            if (details) {
+                document.getElementById("policyTitle").innerText = details.title;
+                document.getElementById("subLimits").innerText = details.subLimits;
+                document.getElementById("roomRentCap").innerText = details.roomRentCap;
+                document.getElementById("coPay").innerText = details.coPay;
+                document.getElementById("waitingPeriod").innerText = details.waitingPeriod;
+                document.getElementById("restoration").innerText = details.restoration;
+                document.getElementById("zonalPanIndia").innerText = details.zonalPanIndia;
+                document.getElementById("exclusions").innerText = details.exclusions;
+                document.getElementById("cashlessReimbursement").innerText = details.cashlessReimbursement;
+                document.getElementById("topUp").innerText = details.topUp;
+                
+                document.getElementById("policyDetails").style.display = "block";
+            } else {
+                document.getElementById("policyDetails").style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insure</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 500;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #007bff 0%, #00d4ff 100%);
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 215, 0, 0.2);
+            clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+            z-index: 0;
+        }
+        .hero-content {
+            max-width: 600px;
+            text-align: center;
+            z-index: 1;
+            position: relative;
+        }
+        .hero img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin: 20px 0;
+            color: #ffd700;
+        }
+        .hero p {
+            font-size: 20px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #007bff;
+            background-color: #ffd700;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #e0e0e0;
+        }
+        .container {
+            padding: 50px 20px;
+            background-color: #ffffff;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        .container:before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: #ffd700;
+            border-radius: 50%;
+            z-index: 0;
+            opacity: 0.2;
+        }
+        .container h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #007bff;
+            position: relative;
+            z-index: 1;
+        }
+        .container p {
+            position: relative;
+            z-index: 1;
+        }
+        .gif-container {
+            max-width: 300px;
+            margin-left: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .gif-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        footer {
+            background-color: #007bff;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+        footer p {
+            margin: 5px 0;
+        }
+        .insure-header, .insure-stats, .insure-features, .insure-content {
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .insure-header h1, .insure-stats div, .insure-content h2 {
+            color: #007bff;
+        }
+        .insure-header .stars {
+            font-size: 1.2em;
+            color: #ffbf00;
+        }
+        .insure-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .insure-stats div {
+            font-size: 1.1em;
+        }
+        .insure-features {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .feature-box {
+            background-color: #f1f1f1;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            width: 30%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .feature-box:hover {
+            transform: translateY(-10px);
+        }
+        .feature-box h3 {
+            font-size: 1.2em;
+            color: #007bff;
+        }
+        .feature-box p {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Insure</div>
+        <nav>
+            <a href="summary.html">Summary</a>
+            <a href="comarision.html">Comparison</a>
+            <a href="review.html">Review</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Simply Secure</h1>
+            <p>With Ditto, you get the best advice on insurance. Understand your policy, get answers to your burning questions, and buy insurance, all at the same place.</p>
+            <a href="AAHI.html" class="button">All About Health Insurance</a>
+        </div>
+        <div class="gif-container">
+            <img src="images/homeimage.png" alt="Health Insurance Animation">
+        </div>
+    </div>
+     <BR>
+    <div class="container" id="summary">
+        <h2>Summary</h2>
+        <p>Insure provides comprehensive advice on various insurance policies, helping you understand the intricacies of your insurance plans and making informed decisions.</p>
+    </div>
+
+    <div class="container" id="comparison">
+        <h2>Comparison</h2>
+        <p>Compare different insurance plans offered by Insure to find the one that best suits your needs. Our comparison tools allow you to evaluate coverage, benefits, and costs side-by-side.</p>
+    </div>
+
+    <div class="insure-header">
+        <h1>Insure is one of India's leading digital insurance platforms</h1>
+        <div class="stars">★★★★★☆</div>
+        <small>Source: Google Review Rating</small>
+    </div>
+
+    <div class="insure-stats">
+        <div>
+            <strong>6.7 crore</strong><br>
+            Registered Consumers
+        </div>
+        <div>
+            <strong>51</strong><br>
+            Insurance Partners
+        </div>
+        <div>
+            <strong>3.4 crore</strong><br>
+            Policies Sold
+        </div>
+    </div>
+
+    <div class="insure-content">
+        <h2>Why Insure is the preferred choice for <br><strong>55 Lakh+ people like you</strong></h2>
+    </div>
+
+    <div class="insure-features">
+        <div class="feature-box">
+            <h3>Platinum insurance partner</h3>
+            <p>Insure is one of the largest partners for most health insurance companies. Our dedicated claims team works with the insurance companies to help you answer insurer queries and track your claim settlement.</p>
+        </div>
+        <div class="feature-box">
+            <h3>Affordable options</h3>
+            <p>We help you find health insurance plans with affordable premiums, uncover discounts and monthly payment options provided by our insurance partners.</p>
+        </div>
+        <div class="feature-box">
+            <h3>30 minute claim support*</h3>
+            <p>Our claim specialists will reach your hospital or home in 30 minutes to support your health insurance claim.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>For Queries Contact : <a href="mailto:insure@info.com" style="color: #ffffff; text-decoration: underline;">insure@info.com</a></p>
+        <p>Company Address: <strong>Insure Limited</strong>, Gandimaisamma, Dundigal, Dist, Hyderabad, Telangana 500043</p>
+        <p>&copy; 2024 Insure. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

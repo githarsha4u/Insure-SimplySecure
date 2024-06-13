@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Comparison</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #f9f9f9; /* Subtle background */
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4da6ff; /* Light blue */
+            color: #333; /* Dark color for header text */
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #3399ff; /* Medium blue */
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            border-radius: 5px;
+        }
+        nav a:hover {
+            background-color: #0073e6; /* Darker blue */
+        }
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333; /* Dark color for header text */
+            margin-bottom: 40px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-top: 0;
+        }
+        .comparison-table {
+            width: 100%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .comparison-table th {
+            background-color: #3399ff; /* Medium blue */
+            color: white;
+            position: relative;
+        }
+        .comparison-table th .dropdown {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+        .comparison-table th .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+            top: 100%;
+            left: 0;
+        }
+        .comparison-table th .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+        .comparison-table th .dropdown-content a:hover {
+            background-color: #e9e9e9;
+        }
+        .comparison-table th .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .comparison-table td {
+            background-color: #ffffff;
+        }
+        footer {
+            background-color: #4da6ff; /* Light blue */
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+        footer a {
+            color: #ffffff;
+            text-decoration: underline;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: #ffffff;
+            opacity: 0.7;
+        }
+        .decorative-element {
+            width: 100%;
+            background: linear-gradient(to right, #4da6ff, #3399ff, #66ff66); /* Blue to Green gradient */
+            height: 10px;
+            margin-bottom: 20px;
+        }
+        .highlight {
+            background-color: #66ff66; /* Light green */
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .decorative-design {
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to right, #4da6ff, #3399ff, #66ff66);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .decorative-design::before, .decorative-design::after {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: 50%;
+            left: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: pulse 6s infinite;
+        }
+        .decorative-design::after {
+            animation-delay: 3s;
+        }
+        .decorative-design svg {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            fill: rgba(255, 255, 255, 0.2);
+        }
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+        body {
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    margin: 0;
+  }
+  .review-container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+    height: 500px; /* Adjust height as needed */
+    width: 50%; /* Adjust width as needed */
+    margin-left: auto; /* Push to right side */
+  }
+  .column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+    height: 100%;
+    position: relative;
+  }
+  .reviews-belt-up {
+    display: flex;
+    flex-direction: column;
+    animation: scroll-up 10s linear infinite;
+  }
+  .reviews-belt-down {
+    display: flex;
+    flex-direction: column;
+    animation: scroll-down 10s linear infinite;
+  }
+  @keyframes scroll-up {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(-100%);
+    }
+  }
+  @keyframes scroll-down {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100%);
+    }
+  }
+  .review {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 15px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .review img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+  }
+  .review h3 {
+    margin: 0 0 5px;
+    font-size: 18px;
+  }
+  .review p {
+    font-size: 14px;
+    color: #555;
+  }
+    </style>
+    <script>
+        function selectPolicy(policyId, tableId) {
+            const policies = {
+                'policy1': {
+                    name: 'Max Life Insurance',
+                    premium: 'Premium = ₹10,000',
+                    coverage: 'Coverage = ₹5,00,000',
+                    hospitalNetwork: 'Hospital Network = 500+',
+                    claimSettlement: 'Claim settlement = 95%',
+                },
+                'policy2': {
+                    name: 'Tata Cliq Insurance',
+                    premium: 'Premium = ₹12,000',
+                    coverage: 'Coverage = ₹7,00,000',
+                    hospitalNetwork: 'Hospital Network = 700+',
+                    claimSettlement: 'Claim Settlement = 97%',
+                },
+                'policy3': {
+                    name: 'Aditya Birla Insurance',
+                    premium: 'Premium = ₹8,000',
+                    coverage: 'Coverage = ₹4,00,000',
+                    hospitalNetwork: 'Hospital Network = 300+',
+                    claimSettlement: 'Claim Settlement = 90%',
+                },
+                'policy4': {
+                    name: 'HDFC Cergo Life Insurance',
+                    premium: 'Premium = ₹15,000',
+                    coverage: 'Coverage = ₹10,00,000',
+                    hospitalNetwork: 'Hospital Network = 1000+',
+                    claimSettlement: 'Claim Settlement = 99%',
+                },
+                'policy5': {
+                    name: 'Star Health Insurance',
+                    premium: 'Premium = ₹9,000',
+                    coverage: 'Coverage = ₹6,00,000',
+                    hospitalNetwork: 'Hospital Network = 400+',
+                    claimSettlement: 'Claim Settlement = 92%',
+                }
+            };
+            
+            const policy = policies[policyId];
+            if (policy) {
+                document.getElementById(`${tableId}-name`).innerText = policy.name;
+                document.getElementById(`${tableId}-premium`).innerText = policy.premium;
+                document.getElementById(`${tableId}-coverage`).innerText = policy.coverage;
+                document.getElementById(`${tableId}-hospitalNetwork`).innerText = policy.hospitalNetwork;
+                document.getElementById(`${tableId}-claimSettlement`).innerText = policy.claimSettlement;
+            }
+
+            // Update the dropdown list of the other table
+            const otherTableId = tableId === 'table1' ? 'table2' : 'table1';
+            const otherDropdownContent = document.getElementById(`${otherTableId}-dropdown-content`);
+            otherDropdownContent.innerHTML = Object.keys(policies).map(policyKey => {
+                if (policyKey !== policyId) {
+                    return `<a href="#" onclick="selectPolicy('${policyKey}', '${otherTableId}')">${policies[policyKey].name}</a>`;
+                }
+                return '';
+            }).join('');
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Insurance Comparison</h1>
+    </header>
+    <div class="decorative-element"></div>
+    <nav>
+    </nav>
+    <div class="container" id="comparison">
+        <h2>Health Insurance Comparison</h2>
+        <table class="comparison-table">
+            <tr>
+                <th>
+                    <div class="dropdown">
+                        <span>Select Policy &#9662;</span>
+                        <div id="table1-dropdown-content" class="dropdown-content">
+                            <a href="#" onclick="selectPolicy('policy1', 'table1')">Max Life Insurance</a>
+                            <a href="#" onclick="selectPolicy('policy2', 'table1')">Tata Cliq Insurance</a>
+                            <a href="#" onclick="selectPolicy('policy3', 'table1')">Aditya Birla Insurance</a>
+                            <a href="#" onclick="selectPolicy('policy4', 'table1')">HDFC Cergo Life Insurance</a>
+                            <a href="#" onclick="selectPolicy('policy5', 'table1')">Star Health Insurance</a>
+                        </div>
+                    </div>
+                </th>
+                <th>
+                    <div class="dropdown">
+                        <span>Select Policy &#9662;</span>
+                        <div id="table2-dropdown-content" class="dropdown-content">
+                            <a href="#" onclick="selectPolicy('policy1', 'table2')">Max Life Insurance</a>
+                            <a href="#" onclick="selectPolicy('policy2', 'table2')">Tata Cliq Insurance</a>
+                            <a href="#" onclick="selectPolicy('policy3', 'table2')">Aditya Birla Insurance</a>
+                            <a href="#" onclick="selectPolicy('policy4', 'table2')">HDFC Cergo Life Insurance</a>
+                            <a href="#" onclick="selectPolicy('policy5', 'table2')">Star Health Insurance</a>
+                        </div>
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <td id="table1-name">--</td>
+                <td id="table2-name">--</td>
+            </tr>
+            <tr>
+                <td id="table1-premium">--</td>
+                <td id="table2-premium">--</td>
+            </tr>
+            <tr>
+                <td id="table1-coverage">--</td>
+                <td id="table2-coverage">--</td>
+            </tr>
+            <tr>
+                <td id="table1-hospitalNetwork">--</td>
+                <td id="table2-hospitalNetwork">--</td>
+            </tr>
+            <tr>
+                <td id="table1-claimSettlement">--</td>
+                <td id="table2-claimSettlement">--</td>
+            </tr>
+        </table>
+        <div class="decorative-design">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill-opacity="1" d="M0,256L30,229.3C60,203,120,149,180,149.3C240,149,300,203,360,234.7C420,267,480,277,540,256C600,235,660,181,720,176C780,171,840,213,900,224C960,235,1020,213,1080,208C1140,203,1200,213,1260,213.3C1320,213,1380,203,1410,197.3L1440,192L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path>
+            </svg>
+        </div>
+        <div class="review-container">
+            <div class="column">
+              <div class="reviews-belt-up">
+                <div class="review">
+                  <img src="https://via.placeholder.com/50" alt="Reviewer 1">
+                  <div>
+                    <h3>Karthik Rangappa</h3>
+                    <p>Had a good chat with Ditto about term insurance. I always knew that smokers pay a higher premium, but not to the extent of 40%.</p>
+                  </div>
+                </div>
+                <div class="review">
+                  <img src="https://via.placeholder.com/50" alt="Reviewer 2">
+                  <div>
+                    <h3>Gorang Agarwal</h3>
+                    <p>Ditto's Report Card: Ease of Connecting - A+, Advisor's Communication - A+, Education - A+, Genuineness - A+, Respecting user (No Spam) - A+. CGPA - 10 (Highly recommended)</p>
+                  </div>
+                </div>
+                <div class="review">
+                  <img src="https://via.placeholder.com/50" alt="Reviewer 3">
+                  <div>
+                    <h3>Kaartic Sivaraam</h3>
+                    <p>I recently took an insurance policy through @joinditto. It was a pleasure getting the insurance through them. They were patient enough to clarify all my doubts and guided me through the whole process. And they don't even charge anything from us! Great service.</p>
+                  </div>
+                </div>
+                <div class="review">
+                  <img src="https://via.placeholder.com/50" alt="Reviewer 4">
+                  <div>
+                    <h3>Samaya</h3>
+                    <p>This one is for the guys at @joinditto. Before any formal interaction with them, @finshots content and newsletter intrigued me. Glad to have received a spam-free consultation, helping us navigate through the fine print of health and life insurance. I absolutely recommend buying insurance from them!</p>
+                  </div>
+                </div>
+                <div class="review">
+                  <img src="https://via.placeholder.com/50" alt="Reviewer 5">
+                  <div>
+                    <h3>Nikunj Kejriwal</h3>
+                    <p>@joinditto is one startup I truly admire. Setting example for others. Have one call with Ditto's Team and you will be confused if it’s a business or charity. Long way to go.</p>
+                  </div>
+                </div>
+                <div class="review">
+                  <img src="https://via.placeholder.com/50" alt="Reviewer 6">
+                  <div>
+                    <h3>Hiren Patel</h3>
+                    <p>Few days ago, I consulted with them to discuss my father's term plan, and they recommended the best possible solution. Excellent team, and highly recommended.</p>
+                  </div>
+                </div>
+                <!-- Additional reviews -->
+                <div class="review">
+                  <img src="https://via.placeholder.com/50" alt="Reviewer 7">
+                  <div>
+                    <h3>Maya Sharma</h3>
+                    <p>Had an excellent experience with Ditto. They provided me with valuable insights and helped me choose the right insurance plan for my family. Highly recommended!</p>
+                  </div>
+                </div>
+                <div class="review">
+                  <img src="https://via.placeholder.com/50" alt="Reviewer 8">
+                  <div>
+                    <h3>Vivek Reddy</h3>
+                    <p>Ditto's customer service is top-notch. They were patient and thorough in answering all my questions. Great job!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="reviews-belt-down">
+                <!-- Existing reviews -->
+                <div class="review">
+                  <img src="https://via.placeholder.com/50" alt="Reviewer 4">
+                  <div>
+                    <h3>Samaya</h3>
+                    <p>This one is for the guys at @joinditto. Before any formal interaction with them, @finshots content and newsletter intrigued me. Glad to have received a spam-free consultation, helping us navigate through the fine print of health and life insurance. I absolutely recommend buying insurance from them!</p>
+                  </div>
+                </div>
+                <div class="review">
+                  <img src="https://via.placeholder.com/50" alt="Reviewer 5">
+                  <div>
+                    <h3>Nikunj Kejriwal</h3>
+                    <p>@joinditto is one startup I truly admire. Setting example for others. Have one call with Ditto's Team and you will be confused if it’s a business or charity. Long way to go.</p>
+                  </div>
+                </div>
+                <div class="review">
+                  <img src="https://via.placeholder.com/50" alt="Reviewer 6">
+                  <div>
+                    <h3>Hiren Patel</h3>
+                    <p>Few days ago, I consulted with them to discuss my father's term plan, and they recommended the best possible solution. Excellent team, and highly recommended.</p>
+                  </div>
+                </div>
+                <!-- Additional reviews -->
+                <div class="review">
+                  <img src="https://via.placeholder.com/50" alt="Reviewer 1">
+                  <div>
+                    <h3>Karthik Rangappa</h3>
+                    <p>Had a good chat with Ditto about term insurance. I always knew that smokers pay a higher premium, but not to the extent of 40%.</p>
+                  </div>
+                </div>
+                <div class="review">
+                  <img src="https://via.placeholder.com/50" alt="Reviewer 2">
+                  <div>
+                    <h3>Gorang Agarwal</h3>
+                    <p>Ditto's Report Card: Ease of Connecting - A+, Advisor's Communication - A+, Education - A+, Genuineness - A+, Respecting user (No Spam) - A+. CGPA - 10 (Highly recommended)</p>
+                  </div>
+                </div>
+                <div class="review">
+                  <img src="https://via.placeholder.com/50" alt="Reviewer 3">
+                  <div>
+                    <h3>Kaartic Sivaraam</h3>
+                    <p>I recently took an insurance policy through @joinditto. It was a pleasure getting the insurance through them. They were patient enough to clarify all my doubts and guided me through the whole process. And they don't even charge anything from us! Great service.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+    </div>
+    <footer>
+        &copy; 2024 Insurance Comparison. All rights reserved. | <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Use</a>
+    </footer>
+</body>
+</html>

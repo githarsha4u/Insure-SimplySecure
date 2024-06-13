@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insure - Reviews</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FFFAE6; /* Lightest yellow */
+            color: #333;
+        }
+
+        header {
+            background-color: #005b96; /* Dark blue */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #hero {
+            background-color: #0074D9; /* Blue */
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        #hero h2 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        #hero p {
+            font-size: 1.2em;
+        }
+
+        #reviews {
+            padding: 40px 20px;
+        }
+
+        #reviews h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2em;
+        }
+
+        .review-card, .rating-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .review-card:hover, .rating-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .review-card h3, .rating-card h3 {
+            margin: 0;
+            font-size: 1.5em;
+            color: #005b96;
+        }
+
+        .review-card p, .rating-card p {
+            margin: 10px 0;
+        }
+
+        .rating {
+            color: gold;
+            font-size: 1.2em;
+        }
+
+        .feature-box {
+            background-color: #d3d3e0;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+            width: 100%;
+            text-align: center;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-box h3 {
+            margin: 0;
+            font-size: 2em;
+            color: #6c5b7b; /* Royal purple */
+        }
+
+        .feature-box p {
+            margin: 20px 0;
+            font-size: 1.2em;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .profile-pic {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+        }
+
+        .review-content {
+            padding-left: 60px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Insure</h1>
+        <p>Simply Secure</p>
+        <nav>
+        </nav>
+    </header>
+    <main>
+        <section id="hero">
+            <h2>Customer Reviews & Ratings</h2>
+            <p>Unbiased, Neutral, and Helpful Information</p>
+        </section>
+        <section id="reviews">
+            <h2>Latest Reviews</h2>
+            <div class="review-card">
+                <div class="review-header">
+                    <img src="https://via.placeholder.com/50" alt="Profile Picture" class="profile-pic">
+                    <h3>Rahul Kumar</h3>
+                </div>
+                <div class="review-content">
+                    <p class="rating">★★★★☆</p>
+                    <p>Great service and support!</p>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <img src="https://via.placeholder.com/50" alt="Profile Picture" class="profile-pic">
+                    <h3>Radha Sharma</h3>
+                </div>
+                <div class="review-content">
+                    <p class="rating">★★★☆☆</p>
+                    <p>Average experience, needs improvement.</p>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <img src="https://via.placeholder.com/50" alt="Profile Picture" class="profile-pic">
+                    <h3>Mohan Gupta</h3>
+                </div>
+                <div class="review-content">
+                    <p class="rating">★★★★★</p>
+                    <p>Excellent coverage and customer support!</p>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <img src="https://via.placeholder.com/50" alt="Profile Picture" class="profile-pic">
+                    <h3>Geeta Devi</h3>
+                </div>
+                <div class="review-content">
+                    <p class="rating">★★☆☆☆</p>
+                    <p>Not satisfied with the claim process.</p>
+                </div>
+            </div>
+            <!-- More reviews -->
+            <div class="review-card">
+                <div class="review-header">
+                    <img src="https://via.placeholder.com/50" alt="Profile Picture" class="profile-pic">
+                    <h3>Arjun Singh</h3>
+                </div>
+                <div class="review-content">
+                    <p class="rating">★★★★★</p>
+                    <p>Great experience, fast claim processing!</p>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <img src="https://via.placeholder.com/50" alt="Profile Picture" class="profile-pic">
+                    <h3>Deepika Patel</h3>
+                </div>
+                <div class="review-content">
+                    <p class="rating">★★★☆☆</p>
+                    <p>Good service overall, but response time could be better.</p>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <img src="https://via.placeholder.com/50" alt="Profile Picture" class="profile-pic">
+                    <h3>Vijay Gupta</h3>
+                </div>
+                <div class="review-content">
+                    <p class="rating">★★★★☆</p>
+                    <p>Impressed with the coverage options.</p>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <img src="https://via.placeholder.com/50" alt="Profile Picture" class="profile-pic">
+                    <h3>Ananya Desai</h3>
+                </div>
+                <div class="review-content">
+                    <p class="rating">★★★☆☆</p>
+                    <p>Fairly satisfied, but there is room for improvement.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Insure. All rights reserved.</p>
+    </footer>
+</body>
+</html>
